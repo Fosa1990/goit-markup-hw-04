@@ -1,3 +1,3 @@
 # goit-markup-hw-04
 
-home work 03 tech skills
+home work 04 tech skills
