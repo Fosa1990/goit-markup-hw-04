@@ -1,11 +1,11 @@
 /* цвет основного ТЕКСТА (простой текст) #757575 [ --primary-text-color ] */
-/* вотричний цвет ТЕКСТА (Заголовки)  ##212121 [ --secondary-text-color ] */
+/* вотричний цвет ТЕКСТА (Заголовки)  #212121 [ --secondary-text-color ] */
 
 /* акцент #2196F3 (Синенький) [ --main-accent-color ] */
 
 /* главный цвет ФОНА #E5E5E5 (Светлый) [ --primary-bg-color ] */
 /* вторичный цвет ФОНА #F5F4FA (Серый) [ --secondary-bg-color ] */
-/* баннер цвет фона #2F303A (тёмный) [ --banner-bg-color ] */
+/* баннер цвет фона #C4C4C4 (тёмный) [ --banner-bg-color ] */
 
 /* Использовать: color: var(--primary-text-color); */
 
@@ -22,9 +22,11 @@
   --secondary-accent-color: #188ce8;
   --primary-bg-color: #e5e5e5;
   --secondary-bg-color: #f5f4fa;
-  --banner-bg-color: #2f303a;
+  --banner-bg-color: #c4c4c4;
   --black-color: #000000;
   --address-color: rgba(255, 255, 255, 0.6);
+  --start-color: rgba(47, 48, 58, 0.4);
+  --end-color: rgba(47, 48, 58, 0.4);
   --shadow-primary: 0px 3px 1px rgba(0, 0, 0, 0.1),
     0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
   --shadow-secondary: 0px 1px 3px rgba(0, 0, 0, 0.12),
@@ -137,6 +139,23 @@ ul {
   margin-right: 50px;
 }
 
+/* Надо иконки поставить слева - пока не работает, иконки сверху */
+/* .site-nav-icons::before {
+  content: '';
+  display: block;
+  height: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 10px;
+}
+.site-nav-icons:nth-child(1)::before {
+  background-image: url(../images/letter.svg);
+}
+.site-nav-icons:nth-child(2)::before {
+  background-image: url(../images/smartphone.svg);
+} */
+
 /* Логотип */
 
 .logo {
@@ -164,11 +183,12 @@ ul {
 /* Навигация по страницам */
 
 .site-nav .link {
-  color: var(--secondary-text-color);
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+
+  color: var(--secondary-text-color);
 }
 
 .site-nav .link:hover,
@@ -202,35 +222,44 @@ ul {
 /* ============================== Баннер (Герой) ============================== */
 
 .hero {
+  max-width: 1600px;
+  min-height: 600px;
+  margin-left: auto;
+  margin-right: auto;
   padding-top: 200px;
   padding-bottom: 200px;
-
-  background-color: var(--banner-bg-color);
+  background-image: linear-gradient(90deg, var(--start-color), var(--end-color)),
+    url('../images/bg-hero.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   text-align: center;
+  background-color: var(--banner-bg-color);
+  /* background: rgb(47, 48, 68); */
 }
 .hero-title {
   margin: 0 auto 30px;
   max-width: 696px;
 
-  color: var(--third-text-color);
   font-weight: 900;
   font-size: 44px;
   line-height: 1.36;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  color: var(--third-text-color);
 }
 .hero-button {
+  cursor: pointer;
   padding: 10px 32px;
   min-width: 200px;
   height: 50px;
 
-  color: var(--third-text-color);
-  background-color: var(--main-accent-color);
-  cursor: pointer;
   font-weight: 700;
   font-size: 16px;
   line-height: 1.87;
   letter-spacing: 0.06em;
+  color: var(--third-text-color);
+  background-color: var(--main-accent-color);
 }
 
 .hero-button:hover,
@@ -251,6 +280,31 @@ ul {
 
 .features-item {
   width: 270px;
+}
+/* Общие настройки картинок перед списками */
+
+.features-item::before {
+  content: '';
+  display: block;
+  height: 120px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 30px;
+}
+
+/* Подключаем каждую картинку отдельно */
+.features-item:nth-child(1)::before {
+  background-image: url(../images/icon-antenna.svg);
+}
+.features-item:nth-child(2)::before {
+  background-image: url(../images/icon-clock.svg);
+}
+.features-item:nth-child(3)::before {
+  background-image: url(../images/icon-diagram.svg);
+}
+.features-item:nth-child(4)::before {
+  background-image: url(../images/icon-astronaut.svg);
 }
 
 .features-item:not(:last-child) {
@@ -314,7 +368,6 @@ ul {
 }
 
 .team-item {
-  /* material shadow v1 */
   box-shadow: var(--shadow-primary);
   border-radius: 0px 0px 4px 4px;
 
@@ -341,13 +394,67 @@ ul {
   margin-top: 0;
   margin-bottom: 0;
 
-  color: var(--primary-text-color);
   font-weight: 400;
   font-size: 16px;
   line-height: 1.18;
   text-align: center;
+  color: var(--primary-text-color);
 }
 
+/* ============================== Постоянные клиенты ============================== */
+
+.clients-list {
+  display: flex;
+}
+
+.client-item {
+  display: block;
+  padding: 16px 32px;
+  border: 1px solid #afb1b8;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+/* Не знаю зачем: просто повешал ховер/фокус на рамку li */
+.client-item:hover,
+.client-item:focus {
+  border-color: var(--main-accent-color);
+}
+
+/* Размери коробки для всех ссылок "Постоянные клиенты" */
+.link-client {
+  display: block;
+  width: 106px;
+  height: 60px;
+}
+
+/* Как-то сделать */
+/* ховер бг при наведении: hover bg color: var(--main-accent-color) */
+/* тень на тексте иконки: box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+
+/* Логотипы клиентов в ссылках, каждому отдельно */
+.icon-client-one {
+  background-image: url(../images/icon-client-one.svg);
+}
+.icon-client-two {
+  background-image: url(../images/icon-client-two.svg);
+}
+.icon-client-three {
+  background-image: url(../images/icon-client-three.svg);
+}
+.icon-client-four {
+  background-image: url(../images/icon-client-four.svg);
+}
+.icon-client-five {
+  background-image: url(../images/icon-client-five.svg);
+}
+.icon-client-six {
+  background-image: url(../images/icon-client-six.svg);
+}
+
+.client-item:not(:last-child) {
+  margin-right: 30px;
+}
 /* ============================== PORTFOLIO ============================== */
 
 /* Список фильтров */
@@ -378,15 +485,13 @@ ul {
   text-align: center;
   letter-spacing: 0.03em;
   color: var(--black-color);
-
-  /* shadow-middle */
-  box-shadow: var(--shadow-primary);
 }
 
 .button:hover,
 .button:focus {
   color: var(--third-text-color);
   background-color: var(--main-accent-color);
+  box-shadow: var(--shadow-primary);
 }
 
 /* Плитки с карточками */
@@ -428,32 +533,41 @@ ul {
   margin-top: 0;
   margin-bottom: 4px;
 
-  color: var(--secondary-text-color);
   font-weight: 700;
   font-size: 18px;
   line-height: 2;
   letter-spacing: 0.03em;
+  color: var(--secondary-text-color);
 }
 
 .card-text {
   margin-top: 0;
   margin-bottom: 0;
 
-  color: var(--primary-text-color);
   font-size: 16px;
   line-height: 1.87;
   letter-spacing: 0.03em;
+  color: var(--primary-text-color);
 }
 
 /* ============================== Подвал Footer ============================== */
 .footer {
+  display: flex;
   padding-top: 60px;
   padding-bottom: 60px;
+}
+
+.footer-container {
+  display: flex;
 }
 
 .footer-logo {
   margin-top: 0;
   margin-bottom: 20px;
+}
+
+.address-container {
+  align-items: center;
 }
 
 .accent-logo-bot {
@@ -495,4 +609,38 @@ ul {
 .address-nav .link:hover,
 .address-nav .link:focus {
   color: var(--main-accent-color);
+}
+
+/* Присоеденийтесь */
+.join-container {
+  align-items: center;
+  margin-left: 70px;
+}
+
+.join-text {
+  margin-bottom: 20px;
+  font-weight: 700;
+  line-height: 1.14;
+  text-transform: uppercase;
+
+  color: var(--third-text-color);
+}
+
+.join-list {
+  display: flex;
+}
+
+.join-item {
+  border-radius: 50%;
+  /* outline: 1px solid red; */
+}
+
+.join-item:not(:last-child) {
+  margin-right: 10px;
+}
+
+.join-link {
+  height: 50px;
+  width: 50px;
+  /* outline: 1px solid green; */
 }
