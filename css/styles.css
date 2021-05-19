@@ -23,14 +23,17 @@
   --primary-bg-color: #e5e5e5;
   --secondary-bg-color: #f5f4fa;
   --banner-bg-color: #c4c4c4;
+  --social-bg-color: rgba(255, 255, 255, 0.1);
   --black-color: #000000;
   --address-color: rgba(255, 255, 255, 0.6);
+  --primary-icon-color: #afb1b8;
   --start-color: rgba(47, 48, 58, 0.4);
   --end-color: rgba(47, 48, 58, 0.4);
   --shadow-primary: 0px 3px 1px rgba(0, 0, 0, 0.1),
     0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
   --shadow-secondary: 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  --shadow-third: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 /* ============================== HTML ============================== */
@@ -85,10 +88,9 @@ a {
   display: inline-block;
 }
 
-/* убираем точку и всех списках */
+/* убираем точку, margin и padding y всех списках */
 ul {
   list-style-type: none;
-  /* Убираем margin и padding у всех списках */
   margin: 0;
   padding: 0;
 }
@@ -190,7 +192,8 @@ ul {
 }
 
 .contacts .link {
-  display: block;
+  display: flex;
+  align-items: center;
   margin-left: auto;
 
   height: 16px;
@@ -271,9 +274,10 @@ ul {
 .features-item {
   width: 270px;
 }
-/* Общие настройки картинок перед списками */
 
-.features-item::before {
+/* Сделал через BACKGROUND - Работает - но не надо :( */
+/* Общие настройки картинок перед списками */
+/* .features-item::before {
   content: '';
   display: block;
   height: 120px;
@@ -281,11 +285,9 @@ ul {
   background-repeat: no-repeat;
   background-position: center;
   margin-bottom: 30px;
-}
-
-/* Сделал через BACKGROUND - Работает - но не надо :( */
+} */
 /* Подключаем каждую картинку отдельно */
-.features-item:nth-child(1)::before {
+/* .features-item:nth-child(1)::before {
   background-image: url(../images/icon-antenna.svg);
 }
 .features-item:nth-child(2)::before {
@@ -296,7 +298,7 @@ ul {
 }
 .features-item:nth-child(4)::before {
   background-image: url(../images/icon-astronaut.svg);
-}
+} */
 
 .features-item:not(:last-child) {
   margin-right: 30px;
@@ -319,6 +321,15 @@ ul {
 
   color: var(--primary-text-color);
   font-weight: 400;
+}
+
+/* Иконки в списках */
+.icon-features {
+  padding: 25px 100px;
+  width: 270px;
+  height: 120px;
+  margin-bottom: 30px;
+  background-color: var(--secondary-bg-color);
 }
 
 /* ============================== Чем мы занимаемся ============================== */
@@ -359,6 +370,8 @@ ul {
 }
 
 .team-item {
+  padding-bottom: 30px;
+
   box-shadow: var(--shadow-primary);
   border-radius: 0px 0px 4px 4px;
 
@@ -367,7 +380,7 @@ ul {
 
 .team-list-title {
   padding-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 16px;
   padding-left: 32px;
   padding-right: 32px;
 }
@@ -392,60 +405,76 @@ ul {
   color: var(--primary-text-color);
 }
 
-/* ============================== Постоянные клиенты ============================== */
+/* Список социальных сетей в карточках */
 
+.team-link {
+  display: flex;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-icon-color);
+}
+
+.team-list-socials {
+  display: flex;
+  padding-right: 32px;
+  padding-left: 32px;
+}
+
+.team-item-social:not(:last-child) {
+  width: calc((100% - 3 * 10px) / 4);
+  margin-right: 10px;
+}
+
+.icon-team {
+  fill: currentColor;
+}
+
+.team-link:hover,
+.team-link:focus {
+  color: var(--third-text-color);
+  background-color: var(--main-accent-color);
+}
+/* ============================== Постоянные клиенты ============================== */
+/* !!! Доделать Размеры иконок..... !!! */
 .clients-list {
   display: flex;
 }
 
 .client-item {
-  display: block;
-  padding: 16px 32px;
-  border: 1px solid #afb1b8;
-  box-sizing: border-box;
-  border-radius: 4px;
-}
-
-/* Не знаю зачем: просто повешал ховер/фокус на рамку li */
-.client-item:hover,
-.client-item:focus {
-  border-color: var(--main-accent-color);
-}
-
-/* Размери коробки для всех ссылок "Постоянные клиенты" */
-.link-client {
-  display: block;
-  width: 106px;
-  height: 60px;
-}
-
-/* Как-то сделать */
-/* ховер бг при наведении: hover bg color: var(--main-accent-color) */
-/* тень на тексте иконки: box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
-
-/* Логотипы клиентов в ссылках, каждому отдельно */
-.icon-client-one {
-  background-image: url(../images/icon-client-one.svg);
-}
-.icon-client-two {
-  background-image: url(../images/icon-client-two.svg);
-}
-.icon-client-three {
-  background-image: url(../images/icon-client-three.svg);
-}
-.icon-client-four {
-  background-image: url(../images/icon-client-four.svg);
-}
-.icon-client-five {
-  background-image: url(../images/icon-client-five.svg);
-}
-.icon-client-six {
-  background-image: url(../images/icon-client-six.svg);
+  width: calc((100% - 5 * 30px) / 6);
 }
 
 .client-item:not(:last-child) {
   margin-right: 30px;
 }
+
+/* Размери ссылки для "Постоянные клиенты" */
+.link-client {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 92px;
+  border: 1px solid var(--primary-icon-color);
+  border-radius: 4px;
+  color: var(--primary-icon-color);
+}
+
+/* Ховер и фокус на ссылку (иконку и рамку) */
+.link-client:hover,
+.link-client:focus {
+  border-color: solid var(--main-accent-color);
+  color: var(--main-accent-color);
+  box-shadow: var(--shadow-third);
+}
+
+/* Иконки клиентов наследование цвета */
+.icon-company {
+  fill: currentColor;
+}
+
 /* ============================== PORTFOLIO ============================== */
 
 /* Список фильтров */
@@ -602,7 +631,7 @@ ul {
   color: var(--main-accent-color);
 }
 
-/* Присоеденийтесь */
+/* ========== Присоеденийтесь ========== */
 .join-container {
   align-items: center;
   margin-left: 70px;
@@ -630,8 +659,25 @@ ul {
   margin-right: 10px;
 }
 
+/* Список социальных сетей в футере */
 .join-link {
-  height: 50px;
-  width: 50px;
-  /* outline: 1px solid green; */
+  display: flex;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-icon-color);
+  background-color: var(--social-bg-color);
+  box-shadow: var(--shadow-third);
+}
+
+.join-link:hover,
+.join-link:focus {
+  color: var(--third-text-color);
+  background-color: var(--main-accent-color);
+}
+
+.icon-join {
+  fill: currentColor;
 }
