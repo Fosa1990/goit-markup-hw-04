@@ -202,14 +202,11 @@ ul {
   color: var(--main-accent-color);
 }
 
-/* Контакты-иконки */
+/* Контакты-иконки (Телефон и Конверт) */
 
 .icon-contacts {
-  fill: currentColor;
   margin-right: 10px;
-  padding-top: 2px;
-  width: 16px;
-  height: 16px;
+  fill: currentColor;
 }
 
 /* ============================== Баннер (Герой) ============================== */
@@ -286,8 +283,9 @@ ul {
   margin-bottom: 30px;
 }
 
+/* Сделал через BACKGROUND - Работает - но не надо :( */
 /* Подключаем каждую картинку отдельно */
-.features-item:nth-child(1)::before {
+/* .features-item:nth-child(1)::before {
   background-image: url(../images/icon-antenna.svg);
 }
 .features-item:nth-child(2)::before {
@@ -298,7 +296,7 @@ ul {
 }
 .features-item:nth-child(4)::before {
   background-image: url(../images/icon-astronaut.svg);
-}
+} */
 
 .features-item:not(:last-child) {
   margin-right: 30px;
