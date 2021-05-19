@@ -139,23 +139,6 @@ ul {
   margin-right: 50px;
 }
 
-/* Надо иконки поставить слева - пока не работает, иконки сверху */
-/* .site-nav-icons::before {
-  content: '';
-  display: block;
-  height: 16px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-right: 10px;
-}
-.site-nav-icons:nth-child(1)::before {
-  background-image: url(../images/letter.svg);
-}
-.site-nav-icons:nth-child(2)::before {
-  background-image: url(../images/smartphone.svg);
-} */
-
 /* Логотип */
 
 .logo {
@@ -217,6 +200,16 @@ ul {
 .site-nav.list:hover,
 .site-nav.list:focus {
   color: var(--main-accent-color);
+}
+
+/* Контакты-иконки */
+
+.icon-contacts {
+  fill: currentColor;
+  margin-right: 10px;
+  padding-top: 2px;
+  width: 16px;
+  height: 16px;
 }
 
 /* ============================== Баннер (Герой) ============================== */
