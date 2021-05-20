@@ -440,9 +440,9 @@ ul {
 /* Ховер и фокус на ссылку (иконку и рамку) */
 .link-client:hover,
 .link-client:focus {
-  border-color: solid var(--main-accent-color);
+  border-color: var(--main-accent-color);
   color: var(--main-accent-color);
-  box-shadow: var(--shadow-third);
+  /* box-shadow: var(--shadow-third); */
 }
 
 /* Иконки клиентов наследование цвета */
