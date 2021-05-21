@@ -295,13 +295,22 @@ ul {
   font-weight: 400;
 }
 
-/* Иконки в списках */
-.icon-features {
-  padding: 25px 100px;
-  width: 270px;
+/* Контейнер иконок в списках */
+.features-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   height: 120px;
   margin-bottom: 30px;
   background-color: var(--secondary-bg-color);
+}
+
+/* Иконки в списках */
+.features-icon {
+  fill: currentColor;
+  width: 70px;
+  height: 70px;
 }
 
 /* ============================== Чем мы занимаемся ============================== */
