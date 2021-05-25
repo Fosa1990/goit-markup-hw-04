@@ -360,10 +360,7 @@ ul {
 }
 
 .team-list-title {
-  padding-top: 30px;
-  padding-bottom: 16px;
-  padding-left: 32px;
-  padding-right: 32px;
+  padding: 30px 32px 16px 32px;
 }
 
 .team-list-name {
@@ -376,8 +373,7 @@ ul {
 }
 
 .team-list-job {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
 
   font-weight: 400;
   font-size: 16px;
